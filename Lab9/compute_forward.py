@@ -1,3 +1,7 @@
+import numpy as np
+from numpy import ndarray
+
+
 def compute_forward(states: ndarray, observations: list[int | None], a_transitions: ndarray,
                     b_emissions: ndarray[float]) -> float:
     # number of states - subtract two because "initial" and "final" doesn't count.

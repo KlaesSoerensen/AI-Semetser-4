@@ -1,0 +1,157 @@
+1. Consider two medical tests, A and B, for a virus. Test A is 95% effective at
+   recognizing the virus when it is present, but has a 10% false positive rate
+   (indicating that the virus is present, when it is not). Test B is 90% effective
+   at recognizing the virus, but has a 5% false positive rate. The two tests use
+   independent methods of identifying the virus. The virus is carried by 1% of all
+   people. Say that a person is tested for the virus using only one of the tests,
+   and that test comes back positive for carrying the virus. Which test returning
+   positive is more indicative of someone really carrying the virus? Justify your
+   answer mathematically.
+
+   Test A is 95% effective at recognizing the virus and has a 10% false positive rate.
+   Test B is 90% effective at recognizing the virus and has a 5% false positive rate.
+   The virus is carried by 1% of all people.
+
+   For Test A:
+   P(Virus) = 0.01 (Prior probability of having the virus)
+   P(-Virus) = 0.99 (Prior probability of not having the virus)
+   P(Positive|Virus) = 0.95 (Sensitivity or true positive rate)
+   P(Positive|-Virus) = 0.1 (False positive rate)
+
+   For Test B:
+   P(Virus) = 0.01 (Prior probability of having the virus)
+   P(-Virus) = 0.99 (Prior probability of not having the virus)
+   P(Positive|Virus) = 0.90 (Sensitivity or true positive rate)
+   P(Positive|-Virus) = 0.05 (False positive rate)
+
+   P(Virus|Positive) = P(Positive|Virus) * P(Virus) / P(Positive) =>
+   P(Virus|Positive) = (P(Positive|Virus) * P(Virus)) / (P(Positive|Virus) * P(Virus) + P(Positive|-Virus) * P(-Virus))
+
+   Test A:
+   0,95 * 0,01 / (0,95 * 0,01 + 0,1 * 0,99) = 0,09
+
+   Test B:
+   0,90 * 0,01 / (0,90 * 0,01 + 0,05 * 0,99) = 0,15
+
+   Test B is more indicative of someone actually carrying the virus despite its lower sensitivity because it has a
+   lower false positive rate, which significantly affects the PPV, especially when the prevalence of the virus is low
+   (1%).
+
+2. After your yearly checkup, the doctor has bad news and good news. The bad news is that
+   you tested positive for a serious disease and that the test is 99% accurate (i.e., the
+   probability of testing positive when you do have the disease is 0.99, as is the
+   probability of testing negative when you don’t have the disease). The good news is that
+   this is a rare disease, striking only 1 in 10,000 people of your age. Why is it good news
+   that the disease is rare? What are the chances that you actually have the disease?
+
+   When a disease is rare, the chances of being a false positive is greatly increased.
+   We can use Bayes' Theorem to argue this statement:
+
+   P(Positive|Disease) = 0.99
+   P(Positive|-Disease) = 0.01
+   P(Disease) = 1 / 10000 = 0.0001
+   P(-Disease) = 1 - P(Disease) = 0,9999
+   P(-Disease|Positive) = 0.01
+   P(-Disease|Negative) = 0.99
+
+   P(Disease|Positive) = P(Positive|Disease) * P(Disease) / P(Positive) =>
+   P(Disease|Positive) = (P(Positive|Disease) * P(Disease)) / (P(Positive|Disease) * P(Disease) + P(Positive|-Disease) * P(-Disease))
+
+   P(Disease|Positive) = (0,99 * 0,0001) / (0,99 * 0,0001 + 0,01 * 0,9999) = 0,0098
+   This means the chances of having the disease are very low.
+
+3. Would it be rational for an agent to hold the three beliefs P(A)=0.4, P(B)=0.3, and P(A∨B)=0.5? If so, what range of
+   probabilities would be rational for the agent to hold for A∧B?
+
+   We need to check if the given probabilities for P(A), P(B), and P(A∨B) are consistent with the axioms of probability.
+   According to the addition rule of probabilities for any two events A and B:
+
+   P(A∨B) = P(A) + P(B) - P(A^B).
+   P(A) = 0.4
+   P(B) = 0.3
+   P(A∨B) = 0.5
+
+   We can rearrange the addition rule to solve for P(A∧B):
+   P(A^B) = P(A) + P(B) - P(A∨B)
+   P(A^B) = 0,4 + 0,3 - 0,5 = 0,2
+
+   Since probabilities cannot be negative, and P(A∧B) cannot be greater than either P(A) or P(B), it would be rational
+   for the agent to hold P(A∧B) in the range of [0, min(P(A), P(B))]. Given the values P(A) = 0.4 and P(B) = 0.3, the
+   maximum possible value for P(A∧B) would be 0.3.
+
+   In this case, it is rational for the agent to believe that P(A∧B) is 0.2, as it falls within the range of [0, 0.3].
+   If P(A∧B) were outside of this range, the beliefs would be considered irrational because they would violate the
+   axioms of probability.
+
+4. Would it be rational for an agent to hold the three beliefs P(A)=0.4, P(B)=0.3, and P(A∨B)=0.7?
+   What type of relationship holds between A and B?
+
+   We need to check if the given probabilities for P(A), P(B), and P(A∨B) are consistent with the axioms of probability.
+   According to the addition rule of probabilities for any two events A and B:
+
+   P(A∨B) = P(A) + P(B) - P(A^B).
+   P(A) = 0.4
+   P(B) = 0.3
+   P(A∨B) = 0.7
+
+   We can rearrange the addition rule to solve for P(A∧B):
+   P(A^B) = P(A) + P(B) - P(A∨B)
+   P(A^B) = 0,4 + 0,3 - 0,7 = 0
+
+   Since P(A∧B) is 0, this implies that events A and B are mutually exclusive, which means they cannot both occur at
+   the same time. This is rational, as P(A∨B) equals the sum of P(A) and P(B) directly, indicating that there is no
+   overlap between A and B.
+
+5. Given the full joint distribution shown below, calculate the following:
+   |----------------|------------|-----------|------------|-----------|
+   |                |        toothache       |       ¬toothache       |
+   |----------------|------------|-----------|------------|-----------|
+   |                |   catch    |  ¬catch   |   catch    |  ¬catch   |
+   |----------------|------------|-----------|------------|-----------|
+   |     cavity     |   0.108    |   0.012   |   0.072    |   0.008   |
+   |----------------|------------|-----------|------------|-----------|
+   |     ¬cavity    |   0.016    |   0.064   |   0.144    |   0.576   |
+   |----------------|------------|-----------|------------|-----------|
+
+   - P(toothache):
+     This is the sum of all probabilities where a toothache occurs, regardless of other conditions:
+     P(toothache) = P(cavity, catch, toothache) + P(¬cavity, catch, toothache) + P(cavity, ¬catch, toothache) +
+     P(¬cavity, ¬catch, toothache) = 0.108 + 0.016 + 0.012 + 0.064 = 0.2
+
+   - P(cavity):
+     This is the sum of all probabilities where a cavity occurs, regardless of other conditions:
+     P(cavity) = P(cavity, catch, toothache) + P(cavity, ¬catch, toothache) + P(cavity, catch, ¬toothache) +
+     P(cavity, ¬catch, ¬toothache) = 0.108 + 0.012 + 0.072 + 0.008 = 0.2
+
+   - P(toothache∧cavity):
+     This is the sum of probabilities where both toothache and cavity occur:
+     P(toothache ∧ cavity) = P(cavity, catch, toothache) + P(cavity, ¬catch, toothache) = 0.108 + 0.012 = 0.12
+
+   - P(toothache∨cavity):
+     This includes cases where either condition or both occur, corrected for the overlap by subtracting the probability of both occurring:
+     P(toothache ∨ cavity) = P(toothache) + P(cavity) - P(toothache ∧ cavity) = 0.2 + 0.2 - 0.12 = 0.28
+
+   - P(toothache|cavity):
+     This is calculated by dividing the probability of both a toothache and cavity by the probability of a cavity:
+     P(toothache | cavity) = P(toothache ∧ cavity) / P(cavity) = 0.12 / 0.2 = 0.6
+
+   - P(cavity|toothache, catch):
+     This is calculated by dividing the probability of all three conditions by the probability of both a toothache and
+     catch:
+     P(cavity | toothache, catch) = P(cavity, catch, toothache) / (P(cavity, catch, toothache) +
+     P(¬cavity, catch, toothache)) = 0.108 / (0.108 + 0.016) = 0.871
+
+   - P(toothache|cavity, catch):
+     This is calculated in a similar manner, focusing on the conditions of cavity and catch:
+     P(toothache | cavity, catch) = P(cavity, catch, toothache) / (P(cavity, catch, toothache) +
+     P(cavity, catch, ¬toothache)) = 0.108 / (0.108 + 0.072) = 0.6
+
+   - Is toothache conditionally independent of catch given cavity? In other words: Does knowing that there is a catch
+     have any effect on having toothache, when you that there is cavity? Justify your answer mathematically and describe
+     (In a few words) what conditional independence means.
+
+     Conditional Independence:
+     For toothache and catch to be conditionally independent given cavity, the probability of toothache given cavity must
+     equal the probability of toothache given both cavity and catch. This was shown to be true, as both probabilities
+     equaled 0.6, confirming conditional independence. This means knowing whether a catch occurred doesn't change the
+     likelihood of a toothache when a cavity is present.
